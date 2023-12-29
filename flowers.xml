@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE flowers SYSTEM "flowers.dtd">
+<flowers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="flowers.xsd">
+	<flower xml:id="f965ab95-a6cb-4401-b7a6-bb1c1f25dc5f" season="summer">
+		<name>Red Rose</name>
+		<count>60</count>
+		<cost>2.5</cost>
+	</flower>
+	<flower xml:id="e51ad318-f8aa-4906-997b-6533d362369f" season="fall">
+		<name>Sunflower</name>
+		<count>35</count>
+		<cost>1</cost>
+	</flower>
+	<flower xml:id="b0fa5783-f238-4016-9d03-c82984f05c89" season="winter">
+		<name>Chrysantheum</name>
+		<count>52</count>
+		<cost>1.35</cost>
+	</flower>
+</flowers>

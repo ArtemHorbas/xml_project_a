@@ -1,0 +1,14 @@
+<!ENTITY % season "(winter | spring | summer | fall)">
+
+<!ELEMENT flowers (flower+)>
+<!ELEMENT flower (name, count, cost)>
+<!ATTLIST flower 
+			xml:id ID #REQUIRED
+			season %season; #REQUIRED>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT count (#PCDATA)>
+<!ELEMENT cost (#PCDATA)>
+
+
+

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:annotation>
+		<xsd:documentation>
+			Dane o kwiatach w kwiaciarnie wysylkowiej
+			Schemat zbudowany za pomocy scenaruisza Zaluzja (Venetian Blind)
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:import schemaLocation="../utils/id.xsd" namespace="http://www.w3.org/XML/1998/namespace" />
+	
+<!-- deklaracje elementów -->
+	<xsd:element name="flowers">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="flower" type="TFlower" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="TFlower">
+		<xsd:group ref="flower_elements"/>
+		<xsd:attributeGroup ref="flower_attributes"/>
+	</xsd:complexType>
+
+<!-- flower groups -->
+	<xsd:group name="flower_elements">
+		<xsd:sequence>
+			<xsd:element name="name" type="TName"/>
+			<xsd:element name="count" type="xsd:unsignedShort"/>
+			<xsd:element name="cost" type="TCost"/>
+		</xsd:sequence>
+	</xsd:group>
+	
+	<xsd:attributeGroup name="flower_attributes">
+		<xsd:attribute ref="xml:id"/>
+		<xsd:attribute name="season" type="TSeason" use="required"/>
+	</xsd:attributeGroup>
+	
+<!-- flower types -->	
+	<xsd:simpleType name="TSeason">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="winter"/>
+			<xsd:enumeration value="spring"/>
+			<xsd:enumeration value="summer"/>
+			<xsd:enumeration value="fall"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TName">
+		<xsd:restriction base="xsd:normalizedString">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TCost">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TCountry">
+		<xsd:restriction base="xsd:token">
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

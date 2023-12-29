@@ -1,0 +1,29 @@
+<!ELEMENT customers (customer)*>
+<!ATTLIST customers xmlns:xi CDATA #FIXED "http://www.w3.org/2001/XInclude">
+
+<!ELEMENT customer (email, name, address, transactions)>
+<!ATTLIST customer xml:id ID #REQUIRED>
+
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT address (city, code, street)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT code (#PCDATA)>
+<!ELEMENT street (#PCDATA)>
+
+<!ELEMENT transactions (transaction)+>
+<!ELEMENT transaction (price, flowers)>
+<!ATTLIST transaction 
+            xml:id ID #REQUIRED
+            date CDATA #REQUIRED
+            time CDATA #REQUIRED>
+            
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT flowers (xi:include)+>
+
+<!ELEMENT xi:include EMPTY>
+<!ATTLIST xi:include
+	href		CDATA	#REQUIRED
+	xpointer	CDATA	#IMPLIED
+	encoding    CDATA    #IMPLIED>

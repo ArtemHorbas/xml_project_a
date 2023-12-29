@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xi="http://www.w3.org/2001/XInclude">	
+	<xsd:annotation>
+		<xsd:documentation>
+			Dane o klientach w kwiaciarnie wysylkowiej
+			Schemat zbudowany za pomocy scenaruisza Zaluzja (Venetian Blind)
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:import schemaLocation="../utils/id.xsd" namespace="http://www.w3.org/XML/1998/namespace" />
+	<xsd:import schemaLocation="../utils/include.xsd" namespace="http://www.w3.org/2001/XInclude" />
+	
+<!-- deklaracje elementów -->
+	<xsd:element name="customers">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="customer" type="TCustomer" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="TCustomer">
+		<xsd:group ref="customer_elements" />
+		<xsd:attribute ref="xml:id" />
+	</xsd:complexType>
+	
+<!-- customer groups -->
+	<xsd:group name="customer_elements">
+		<xsd:sequence>
+			<xsd:element name="email" type="TEmail" />
+			<xsd:element name="name" type="TName"/>
+			<xsd:element name="address" type="TAddress"  />
+			<xsd:element name="transactions" type="TTransactions" />
+		</xsd:sequence>
+	</xsd:group>
+	
+<!-- customer types -->
+	<xsd:simpleType name="TEmail">
+		<xsd:restriction base="xsd:token">
+			<!-- pattern skrzyni gmail -->
+			<xsd:pattern value=".*@gmail.com" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TName">
+		<xsd:restriction base="xsd:normalizedString">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- address  -->
+	<xsd:complexType name="TAddress">
+		<xsd:group ref="address_elements" />
+	</xsd:complexType>
+	
+	<xsd:group name="address_elements">
+		<xsd:sequence>
+			<xsd:element name="city" type="TCity"/>
+			<xsd:element name="code" type="TCode"/>
+			<xsd:element name="street" type="TStreet"/>
+		</xsd:sequence>
+	</xsd:group>
+	
+	<!-- address types -->
+	<xsd:simpleType name="TCity">
+		<xsd:restriction base="xsd:normalizedString">
+			<xsd:maxLength value="25"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TCode">
+		<xsd:restriction base="xsd:normalizedString">
+			<xsd:pattern value="[0-9][0-9]-[0-9][0-9][0-9]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TStreet">
+		<xsd:restriction base="xsd:normalizedString">
+			<xsd:maxLength value="60"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- transactions -->
+	<xsd:complexType name="TTransactions">
+		<xsd:sequence>
+			<xsd:element name="transaction" type="TTransaction" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TTransaction">
+		<xsd:group ref="transaction_elements" />
+		<xsd:attributeGroup ref="transaction_attributes" />
+	</xsd:complexType>
+	
+	<!-- tranasction groups -->
+	<xsd:group name="transaction_elements">
+		<xsd:sequence>
+			<xsd:element name="price" type="TPrice" />
+			<xsd:element name="flowers" type="TFlowers"/>
+		</xsd:sequence>
+	</xsd:group>
+	
+	<xsd:attributeGroup name="transaction_attributes">
+		<xsd:attribute ref="xml:id" />
+		<xsd:attribute name="date" type="xsd:date" use="required" />
+		<xsd:attribute name="time" type="xsd:time" use="required" />
+	</xsd:attributeGroup>
+	
+	<!-- transaction types -->
+	<xsd:simpleType name="TPrice">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:complexType name="TFlowers">
+		<xsd:sequence>
+			<xsd:element ref="xi:include" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>

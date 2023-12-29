@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE customers SYSTEM "customers.dtd">
+<customers xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="customers.xsd">
+	<customer xml:id="e0f6aa71-6d95-4cab-adb0-4f5f84993d1e">
+		<email>wautb@gmail.com</email>
+		<name>Wax Iwanow</name>
+		<address>
+			<city>Krakow</city>
+			<code>01-743</code>
+			<street>Warszawska 1</street>
+		</address>
+		<transactions>
+			<transaction xml:id="ab792690-ceb4-4039-8541-335be3b766cd" date="2022-09-15" time="13:27:12.5">
+				<price>1</price>
+				<flowers>
+					<xi:include href="../flowers/flowers.xml" xpointer="f965ab95-a6cb-4401-b7a6-bb1c1f25dc5f"  />
+				</flowers>
+			</transaction>
+		</transactions>
+	</customer>
+	<customer xml:id="a68ca9b2-47c9-418e-a94f-1a663d78cdca">
+		<email>ttkdf@gmail.com</email>
+		<name>Tim Linky</name>
+		<address>
+			<city>Gdynia</city>
+			<code>02-522</code>
+			<street>Krakowska 1</street>
+		</address>
+		<transactions>
+			<transaction xml:id="a59a07d1-17b7-4898-a4c9-030b378abaeb" date="2022-09-16" time="15:17:42.5">
+				<price>2.5</price>
+				<flowers>
+					<xi:include href="../flowers/flowers.xml" xpointer="e51ad318-f8aa-4906-997b-6533d362369f" />
+					<xi:include href="../flowers/flowers.xml" xpointer="f965ab95-a6cb-4401-b7a6-bb1c1f25dc5f" />
+				</flowers>
+			</transaction>
+			<transaction xml:id="a80cebbd-0b77-4885-974f-55eea51d1ffe" date="2022-09-19" time="18:57:24.5">
+				<price>3.25</price>
+				<flowers>
+					<xi:include href="../flowers/flowers.xml" xpointer="b0fa5783-f238-4016-9d03-c82984f05c89" />
+					<xi:include href="../flowers/flowers.xml" xpointer="e51ad318-f8aa-4906-997b-6533d362369f" />
+					<xi:include href="../flowers/flowers.xml" xpointer="f965ab95-a6cb-4401-b7a6-bb1c1f25dc5f" />
+				</flowers>
+			</transaction>
+		</transactions>
+	</customer>
+</customers>
